@@ -3,7 +3,7 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if((isset($_POST['password']) && $_POST['password'] !=''))
+		if((isset($_POST['password'])))
 		{
 			$password = trim($_POST['password']);
 
@@ -28,6 +28,7 @@
 			}
 			exit;
 		}
+		echo "No password";
 	}
 ?>
 
