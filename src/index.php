@@ -64,7 +64,7 @@
 				<input type="password" name="password" required placeholder="Enter Your Password">
 			</div>
 			<div class="field-container">
-				<button type="submit" name="submit">Login</button>
+				<button type="submit" name="login">Login</button>
 			</div>
 			
 		</form>
