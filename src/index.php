@@ -25,11 +25,10 @@
 			}
 			if(!isset($errorMsg)){
 				header('location:dashboard.php');
+				exit;
 			}
-			exit;
-		}
-		echo "No password";
-	}
+			
+		}	}
 ?>
 
 <!DOCTYPE html>
