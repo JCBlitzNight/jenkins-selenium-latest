@@ -10,11 +10,8 @@
 			// Validate password strength
 			$uppercase = preg_match('@[A-Z]@', $password);
 			$lowercase = preg_match('@[a-z]@', $password);
-			$number    = preg_match('@[0-9]@', $password);
-			$specialChars = preg_match('@[^\w]@', $password);
-
-			if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-				$errorMsg = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+			if(!$uppercase || !$lowercase || strlen($password) < 8) {
+				$errorMsg = 'Password should be at least 8 characters in length and should include at least one upper case letter.';
 			}
 
 			$lines= file("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt");
