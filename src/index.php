@@ -19,7 +19,7 @@
 
 			$lines= file("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt");
 			foreach ($lines as $line) {
-				if($password == line){
+				if($password == $line){
 					$errorMsg = 'Password found in password list';
 				}
 			}
