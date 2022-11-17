@@ -3,23 +3,30 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if((isset($_POST['email']) && $_POST['email'] !='') && (isset($_POST['password']) && $_POST['password'] !=''))
+		if((isset($_POST['password']) && $_POST['password'] !=''))
 		{
-			$email = trim($_POST['email']);
 			$password = trim($_POST['password']);
-			
-			if($email == "user@example.com")
-			{	
-				if($password == "password1234")
-				{
-					$_SESSION['user_id'] = $email;
-					
-					header('location:dashboard.php');
-					exit;
-					
+
+			// Validate password strength
+			$uppercase = preg_match('@[A-Z]@', $password);
+			$lowercase = preg_match('@[a-z]@', $password);
+			$number    = preg_match('@[0-9]@', $password);
+			$specialChars = preg_match('@[^\w]@', $password);
+
+			if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+				$errorMsg = 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+			}
+
+			$lines= file("https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt");
+			foreach ($lines as $line) {
+				if($password == line){
+					$errorMsg = 'Password found in password list';
 				}
 			}
-			$errorMsg = "Login failed";
+			if(!isset($errorMsg)){
+				header('location:dashboard.php');
+			}
+			exit;
 		}
 	}
 ?>
@@ -27,14 +34,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page | PHP Login and logout example with session</title>
+<title>Login Page | | ICT32303 Practical Test</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 	
 	<div class="container">
-		<h1>PHP Login and Logout with Session</h1>
+		<h1>ICT32303 Practical Test</h1>
 		<?php 
 			if(isset($errorMsg))
 			{
@@ -53,15 +60,11 @@
 		?>
 		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 			<div class="field-container">
-				<label>Email</label>
-				<input type="email" name="email" required placeholder="Enter Your Email">
-			</div>
-			<div class="field-container">
 				<label>Password</label>
 				<input type="password" name="password" required placeholder="Enter Your Password">
 			</div>
 			<div class="field-container">
-				<button type="submit" name="submit">Submit</button>
+				<button type="submit" name="submit">Login</button>
 			</div>
 			
 		</form>

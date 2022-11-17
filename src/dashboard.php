@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard | PHP Login and logout example with session</title>
+<title>Dashboard | ICT32303 Practical Test</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
