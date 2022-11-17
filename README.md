@@ -1,1 +1,1 @@
-# jenkins-selenium-latest
+# jenkins-php-selenium-test
